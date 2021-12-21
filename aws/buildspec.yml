@@ -10,7 +10,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn -s aws/settings.xml clean install deploy
+      - mvn -s aws/settings.xml clean deploy
   post_build:
     commands:
       - echo Build completed on `date`
