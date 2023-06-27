@@ -1,7 +1,7 @@
 # Logzio Log4j 2 Appender 
 Log4j 2 Appender that ships logs using HTTPS bulk
-[![Build Status](https://travis-ci.org/logzio/logzio-log4j2-appender.svg?branch=master)](https://travis-ci.org/logzio/logzio-log4j2-appender)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.logz.log4j2/logzio-log4j2-appender/badge.svg)](http://mvnrepository.com/artifact/io.logz.log4j2/logzio-log4j2-appender)
+<!-- [![Build Status](https://travis-ci.org/logzio/logzio-log4j2-appender.svg?branch=master)](https://travis-ci.org/logzio/logzio-log4j2-appender)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.logz.log4j2/logzio-log4j2-appender/badge.svg)](http://mvnrepository.com/artifact/io.logz.log4j2/logzio-log4j2-appender) -->
 
 This appender sends logs to your [Logz.io](http://logz.io) account, using non-blocking threading, bulks, and HTTPS encryption. Please note that this appender requires log4j version 2.7 and up, and java 8 and up.
 
@@ -13,7 +13,15 @@ This appender uses  [LogzioSender](https://github.com/logzio/logzio-java-sender)
     <dependency>
         <groupId>io.logz.log4j2</groupId>
         <artifactId>logzio-log4j2-appender</artifactId>
-        <version>1.0.12</version>
+        <version>1.0.18</version>
+    </dependency>
+```
+The appender also requires a logger implementation, for example:
+```xml
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>2.15.0</version>
     </dependency>
 ```
 
@@ -48,6 +56,7 @@ This appender uses  [LogzioSender](https://github.com/logzio/logzio-java-sender)
 | **debug**       | *false*                                    | Print some debug messages to stdout to help to diagnose issues |
 | **compressRequests**       | *false*                                    | Boolean. `true` if logs are compressed in gzip format before sending. `false` if logs are sent uncompressed. |
 | **dissabled**       | *false*                                    | Optional. Boolean. `true` if this plugin should be disabled. `false` if the plugin should be enabled to send logs. |
+| **exceedMaxSizeAction**       | *"cut"*                                    | String. cut to truncate the message field or drop to drop log that exceed the allowed maximum size for logzio. If the log size exceeding the maximum size allowed after truncating the message field, the log will be dropped. |
 
 #### Parameters for in-memory queue
 | Parameter          | Default                              | Explained  |
@@ -138,6 +147,17 @@ Will send a log to Logz.io that looks like this:
 ```
 
 ### Release notes
+ - 1.0.18
+   - updated logzio sender version, fixing IndexOutOfBounds exception with bigqueue
+ - 1.0.16
+   - Added exceedMaxSizeAction parameter for handling oversized logs.
+ - 1.0.15
+   - Bump versions of `log4j-core`
+ - 1.0.14
+   - Bump versions of `log4j-api` and `log4j-core`
+ - 1.0.13
+   - Fix for issue #38, thanks to @idachev
+   - Bump versions of `log4j` and `guava`
  - 1.0.11
    - add in memory queue option
    - change bufferDir(deprecated) to queueDir
