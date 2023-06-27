@@ -6,7 +6,7 @@
 
     <groupId>io.logz.log4j2</groupId>
     <artifactId>logzio-log4j2-appender</artifactId>
-    <version>1.0.15.4-ps</version>
+    <version>1.0.18-ps</version>
 
     <packaging>jar</packaging>
     <name>Logz.io Log4j2 Appender</name>
@@ -44,7 +44,7 @@
     </distributionManagement>
 
     <properties>
-        <logzio-sender-version>1.1.1</logzio-sender-version>
+        <logzio-sender-version>1.1.7</logzio-sender-version>
     </properties>
 
     <build>
@@ -74,7 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -179,7 +179,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.4</version>
+            <version>4.13.2</version>
         </dependency>
     </dependencies>
 </project>
